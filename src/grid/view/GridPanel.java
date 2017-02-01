@@ -2,7 +2,7 @@ package grid.view;
 
 import javax.swing.*;
 import grid.controller.GridController;
-
+import javax.swing.table.*;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -20,8 +20,14 @@ public class GridPanel extends JPanel
 	private SpringLayout baseLayout;
 	private GridController baseController;
 	
+	private JTable gridTable;
+	private JScrollPane gridPane;
+	
 	private void GridPanel(GridController baseController)
 	{
+		this.baseController = baseController;
+		this.baseLayout = new SpringLayout();
+		
 		this.setLayout(baseLayout);
 		this.setPreferredSize(new Dimension(900, 600));
 		this.rowField = new JTextField (5);
@@ -35,6 +41,16 @@ public class GridPanel extends JPanel
 		setupPanel();
 		setupLayout();
 		setupListeners();
+	}
+	
+	private void setupTable()
+	{
+		//Load model
+		DefaultTableModel data = new DefaultTableModel(baseController.getGrid(), new String []{"one","two","three","four","five"});
+		gridTable = new JTable();
+		gridTable.setModel(data);
+		gridPane = new JScrollPane();
+		gridPane.setViewportView(gridTable);
 	}
 	
 	private void setupPanel()

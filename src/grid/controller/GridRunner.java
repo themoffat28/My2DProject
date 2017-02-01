@@ -1,5 +1,7 @@
 package grid.controller;
 
+import grid.controller.*;
+
 public class GridRunner
 {
 	public static void main (String [] args)

@@ -1,14 +1,16 @@
 package grid.view;
 
-import javax.swing.*;
 import grid.controller.GridController;
-import javax.swing.table.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.*;
+import javax.swing.table.*;
 
 public class GridPanel extends JPanel
 {
-	public GridPanel() {
+	public GridPanel() 
+	{
+		
 	}
 	private JTextField rowField;
 	private JTextField columnField;
@@ -23,7 +25,7 @@ public class GridPanel extends JPanel
 	private JTable gridTable;
 	private JScrollPane gridPane;
 	
-	private void GridPanel(GridController baseController)
+	public GridPanel(GridController baseController)
 	{
 		this.baseController = baseController;
 		this.baseLayout = new SpringLayout();
@@ -56,29 +58,17 @@ public class GridPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
-		this.setSize(new Dimension(900,600));
-		this.setBackground(Color.WHITE);
-		
-		rowField.setEditable(true);
-		columnField.setEditable(true);
-		inputField.setEditable(true);
-		
-		inputLabel.setVerticalTextPosition(JLabel.BOTTOM);
-		inputLabel.setHorizontalAlignment(JLabel.CENTER);
-		
-		rowLabel.setVerticalTextPosition(JLabel.BOTTOM);
-		rowLabel.setHorizontalAlignment(JLabel.CENTER);
-		
-		columnLabel.setVerticalTextPosition(JLabel.BOTTOM);
-		columnLabel.setHorizontalAlignment(JLabel.CENTER);
-		
-		this.add(rowField);
+		this.setMinimumSize(new Dimension(700,700));
+		this.setBackground(Color.CYAN);
+		this.add(gridPane);
 		this.add(columnField);
-		this.add(inputField);
+		this.add(rowField);
+		this.add(inputField); 
 		this.add(inputLabel);
 		this.add(rowLabel);
 		this.add(columnLabel);
 		this.add(submitButton);
+		
 	}
 	
 	private void setupLayout()
